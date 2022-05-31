@@ -31,7 +31,7 @@ class GameScene extends Phaser.Scene {
 		const bugs = this.physics.add.group();
 
 		const bugList = ['bug1', 'bug2', 'bug3']
-
+		
 		const bugGen = () => {
 			const xCoord = Math.random() * 640
 			let randomBug = bugList[Math.floor(Math.random() * 3)]
@@ -48,7 +48,7 @@ class GameScene extends Phaser.Scene {
 		this.physics.add.collider(bugs, platforms, function (bug) {
 			bug.destroy();
 			gameState.score += 10;
-			gamestate.housesPowered += 1;
+			gameState.housesPowered += 1;
 			gameState.scoreText.setText(`Megawatt Hours: ${gameState.score}`);
 			gameState.housesPoweredText.setText(`${gameState.housesPowered} houses powered for a year`);
 		})
@@ -61,7 +61,7 @@ class GameScene extends Phaser.Scene {
 
 			this.input.on('pointerup', () => {
 				gameState.score = 0;
-				gamestate.housesPowered = 0;
+				gameState.housesPowered = 0;
 				this.scene.restart();
 				console.log('Game Reset')
 			});
