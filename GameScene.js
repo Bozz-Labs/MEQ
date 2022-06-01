@@ -4,9 +4,9 @@ class GameScene extends Phaser.Scene {
 	}
 
 	preload() {
-		this.load.image('bug1', 'https://i.postimg.cc/mgmNDBCH/download-6.png');
-		this.load.image('bug2', 'https://i.postimg.cc/mgmNDBCH/download-6.png');
-		this.load.image('bug3', 'https://i.postimg.cc/mgmNDBCH/download-6.png');
+		this.load.image('bug1', 'https://i.postimg.cc/KYHNh8cJ/Lightning-bolt.png');
+		this.load.image('bug2', 'https://i.postimg.cc/KYHNh8cJ/Lightning-bolt.png');
+		this.load.image('bug3', 'https://i.postimg.cc/KYHNh8cJ/Lightning-bolt.png');
 		this.load.image('platform', 'https://content.codecademy.com/courses/learn-phaser/physics/platform.png');
 		this.load.image('codey', 'https://content.codecademy.com/courses/learn-phaser/physics/codey.png');
 	}
