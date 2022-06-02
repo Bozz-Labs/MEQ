@@ -71,8 +71,14 @@ class GameScene extends Phaser.Scene {
 	update() {
 		if (gameState.cursors.left.isDown) {
 			gameState.player.setVelocityX(-160);
+		if (gameState.cursors.up.isDown) {
+			gameState.player.setVelocityY(-160)
+		}
 		} else if (gameState.cursors.right.isDown) {
 			gameState.player.setVelocityX(160);
+		if (gameState.cursors.up.isDown) {
+				gameState.player.setVelocityY(-160)
+			}
 		} else {
 			gameState.player.setVelocityX(0);
 		}
