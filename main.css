@@ -1,6 +1,7 @@
 :root {
     --white: #FFFFFF;
     --black: #000000;
+    --green: #00FF00;
   }
   body {
     background: var(--bg);
@@ -26,12 +27,12 @@ li {
     --bg: var(--white);
     --fontColor: var(--black);
     --btnBg: var(--black);
-    --btnFontColor: var(--white);
+    --btnFontColor: var(--green);
   }
   
   .dark-theme {
     --bg: var(--black);
-    --fontColor: var(--white);
+    --fontColor: var(--green);
     --btnBg: var(--white);
     --btnFontColor: var(--black);
   }
