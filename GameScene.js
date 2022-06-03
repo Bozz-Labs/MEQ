@@ -39,7 +39,7 @@ class GameScene extends Phaser.Scene {
 		}
 
 		const bugGenLoop = this.time.addEvent({
-			delay: 170,
+			delay: 100,
 			callback: bugGen,
 			callbackScope: this,
 			loop: true,
