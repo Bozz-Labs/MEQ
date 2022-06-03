@@ -7,7 +7,7 @@ switcher.addEventListener('click', function() {
 
     var className = document.body.className;
     if(className == "light-theme") {
-        this.textContent = "Hack";
+        this.textContent = "Dark";
     }
     else {
         this.textContent = "Light";
