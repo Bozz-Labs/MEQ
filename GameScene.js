@@ -51,6 +51,7 @@ class GameScene extends Phaser.Scene {
 			gameState.housesPowered += 1;
 			gameState.scoreText.setText(`Megawatt Hours: ${gameState.score}`);
 			gameState.housesPoweredText.setText(`${gameState.housesPowered} houses powered for a year`);
+			console.log('Entity Killed')
 		})
 
 		this.physics.add.collider(gameState.player, bugs, () => {
@@ -58,6 +59,8 @@ class GameScene extends Phaser.Scene {
 			this.physics.pause();
 			this.add.text(180, 250, 'Game Over', { fontSize: '15px', fill: '#000000' });
 			this.add.text(160, 270, 'Click To Restart', { fontSize: '15px', fill: '#000000' })	
+			console.log('Player Entity killed')
+			console.log('Game Stopped')
 
 			this.input.on('pointerup', () => {
 				gameState.score = 0;
@@ -71,13 +74,16 @@ class GameScene extends Phaser.Scene {
 	update() {
 		if (gameState.cursors.left.isDown) {
 			gameState.player.setVelocityX(-160);
+			console.log('Set player velocityX to -160')
 		} else if (gameState.cursors.right.isDown) {
 			gameState.player.setVelocityX(160);
+			console.log('Set player velocityX to 160');
 		} else {
 			gameState.player.setVelocityX(0);
 		}
 		if (gameState.cursors.up.isDown) {
 			gameState.player.setVelocityY(-160)
+			console.log('Set player velocityY to -160')
 		}
 	}
 }
