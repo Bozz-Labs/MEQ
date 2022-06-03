@@ -4,7 +4,7 @@ const gameState = {
 
 const config = {
 	type: Phaser.AUTO,
-	width: 500,
+	width: 450,
 	height: 500,
 	backgroundColor: "ffffff",
 	physics: {
