@@ -33,7 +33,7 @@ class GameScene extends Phaser.Scene {
 		const bugList = ['bug1', 'bug2', 'bug3']
 		
 		const bugGen = () => {
-			const xCoord = Math.random() * 640
+			const xCoord = Math.random() * 450
 			let randomBug = bugList[Math.floor(Math.random() * 3)]
 			bugs.create(xCoord, 10, randomBug)
 		}
