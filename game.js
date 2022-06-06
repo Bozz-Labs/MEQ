@@ -1,5 +1,6 @@
 const gameState = {
-	score: 0
+	score: 0,
+	housesPowered: 0
 };
 
 const config = {

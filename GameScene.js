@@ -4,15 +4,13 @@ class GameScene extends Phaser.Scene {
 	}
 
 	preload() {
-		this.load.image('bug1', 'https://i.postimg.cc/KYHNh8cJ/Lightning-bolt.png');
-		this.load.image('bug2', 'https://i.postimg.cc/KYHNh8cJ/Lightning-bolt.png');
-		this.load.image('bug3', 'https://i.postimg.cc/KYHNh8cJ/Lightning-bolt.png');
+		this.load.image('bolt', 'https://i.postimg.cc/KYHNh8cJ/Lightning-bolt.png');
 		this.load.image('platform', 'https://content.codecademy.com/courses/learn-phaser/physics/platform.png');
-		this.load.image('codey', 'https://i.postimg.cc/05JB7fSW-/Henry-The-stickman-unsized-2-10.png');
+		this.load.image('Henry', 'https://i.postimg.cc/05JB7fSW-/Henry-The-stickman-unsized-2-10.png');
 	}
 	
 	create() {
-		gameState.player = this.physics.add.sprite(225, 450, 'codey').setScale(.5);
+		gameState.player = this.physics.add.sprite(225, 450, 'Henry').setScale(.5);
 
 		const platforms = this.physics.add.staticGroup();
 
@@ -28,25 +26,25 @@ class GameScene extends Phaser.Scene {
 
 		gameState.cursors = this.input.keyboard.createCursorKeys();
 
-		const bugs = this.physics.add.group();
+		const bolts = this.physics.add.group();
 
-		const bugList = ['bug1', 'bug2', 'bug3']
+		const boltList = ['bolt']
 		
-		const bugGen = () => {
+		const boltGen = () => {
 			const xCoord = Math.random() * 450
-			let randomBug = bugList[Math.floor(Math.random() * 3)]
-			bugs.create(xCoord, 10, randomBug)
+			let randomBolt = boltList[Math.floor(Math.random() * 1)]
+			bolts.create(xCoord, 10, randomBolt)
 		}
 
-		const bugGenLoop = this.time.addEvent({
+		const boltGenLoop = this.time.addEvent({
 			delay: 100,
-			callback: bugGen,
+			callback: boltGen,
 			callbackScope: this,
 			loop: true,
 		});
 
-		this.physics.add.collider(bugs, platforms, function (bug) {
-			bug.destroy();
+		this.physics.add.collider(bolts, platforms, function (bolt) {
+			bolt.destroy();
 			gameState.score += 10;
 			gameState.housesPowered += 1;
 			gameState.scoreText.setText(`Megawatt Hours: ${gameState.score}`);
@@ -54,7 +52,7 @@ class GameScene extends Phaser.Scene {
 			console.log('Entity Killed')
 		})
 
-		this.physics.add.collider(gameState.player, bugs, () => {
+		this.physics.add.collider(gameState.player, bolts, () => {
 			bugGenLoop.destroy();
 			this.physics.pause();
 			this.add.text(180, 250, 'Game Over', { fontSize: '15px', fill: '#000000' });
