@@ -53,7 +53,7 @@ class GameScene extends Phaser.Scene {
 		})
 
 		this.physics.add.collider(gameState.player, bolts, () => {
-			bugGenLoop.destroy();
+			boltGenLoop.destroy();
 			this.physics.pause();
 			this.add.text(180, 250, 'Game Over', { fontSize: '15px', fill: '#000000' });
 			this.add.text(160, 270, 'Click To Restart', { fontSize: '15px', fill: '#000000' })	
