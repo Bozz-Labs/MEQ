@@ -1,3 +1,12 @@
+const facts = [
+	"Apples",
+	"Bananas",
+	"bananas"
+  ];
+  
+  const randomFact = facts[Math.floor(Math.random()*facts.length)];
+
+
 class GameScene extends Phaser.Scene {
 	constructor(){
 		super({ key: 'GameScene' })
@@ -17,8 +26,8 @@ class GameScene extends Phaser.Scene {
 		platforms.create(225, 490, 'platform').setScale(1, .3).refreshBody();
 
 		gameState.scoreText = this.add.text(20, 485, 'Megawatt Hours: 0', { fontSize: '15px', fill: '#000000' });
-    
-        gameState.housesPoweredText = this.add.text(20, 450, '0 Houses powered for a year', { fontSize: '15px', fill: '#000000' });
+		
+		gameState.housesPoweredText = this.add.text(20, 450, '0 Houses powered for a year', { fontSize: '15px', fill: '#000000' });
 
 		gameState.player.setCollideWorldBounds(true);
 
@@ -57,8 +66,10 @@ class GameScene extends Phaser.Scene {
 			this.physics.pause();
 			this.add.text(180, 250, 'Game Over', { fontSize: '15px', fill: '#000000' });
 			this.add.text(160, 270, 'Click To Restart', { fontSize: '15px', fill: '#000000' })	
+			this.add.text(160, 290, `Did you know that ${randomFact}`, { fontSize: '15px', fill: '#000000' })
 			console.log('Player Entity killed')
 			console.log('Game Stopped')
+			alert('Refresh the page to view another fact!')
 
 			this.input.on('pointerup', () => {
 				gameState.score = 0;
