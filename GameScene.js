@@ -1,7 +1,7 @@
 const facts = [
 	"Apples",
 	"Bananas",
-	"bananas"
+	"Ontario has no coal burning power plants?"
   ];
   
   const randomFact = facts[Math.floor(Math.random()*facts.length)];
@@ -66,10 +66,15 @@ class GameScene extends Phaser.Scene {
 			this.physics.pause();
 			this.add.text(180, 250, 'Game Over', { fontSize: '15px', fill: '#000000' });
 			this.add.text(160, 270, 'Click To Restart', { fontSize: '15px', fill: '#000000' })	
-			this.add.text(160, 290, `Did you know that ${randomFact}`, { fontSize: '15px', fill: '#000000' })
 			console.log('Player Entity killed')
 			console.log('Game Stopped')
-			alert('Refresh the page to view another fact!')
+			if (confirm(`Did you know that ${randomFact}? Click OK to recieve a diffrent fact later. Click cancel to continue playing.`)) {
+				// OK
+				window.location.reload();
+			  } else {
+				// Cancel
+				console.log('Canceled Refresh')
+			  }
 
 			this.input.on('pointerup', () => {
 				gameState.score = 0;
