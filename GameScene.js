@@ -1,7 +1,8 @@
 const facts = [
-	"Canada produces an average of 4,596,724.82 barrels of crude oil a day!",
-	"hydro power and wind turbines are almost the same! The only diffrence is how we get the rotor to move!",
-	"Ontario has no coal burning power plants"
+	"Canada produces an average of 4,596,724.82 barrels of crude oil a day?",
+	"hydro power and wind turbines are almost the same? The only diffrence is how we get the rotor to move!",
+	"Ontario has no coal burning power plants?",
+	"Nuclear energy creates zero emissions?"
   ];
   
   const randomFact = facts[Math.floor(Math.random()*facts.length)];
@@ -68,7 +69,7 @@ class GameScene extends Phaser.Scene {
 			this.add.text(160, 270, 'Click To Restart', { fontSize: '15px', fill: '#000000' })	
 			console.log('Player Entity killed')
 			console.log('Game Stopped')
-			if (confirm(`Did you know that ${randomFact}? Click OK to recieve a diffrent fact later. Click cancel to continue playing.`)) {
+			if (confirm(`Did you know that ${randomFact} Click OK to recieve a diffrent fact later. Click cancel to continue playing.`)) {
 				// OK
 				window.location.reload();
 			  } else {
