@@ -1,7 +1,7 @@
 const facts = [
 	"Apples",
-	"Bananas",
-	"Ontario has no coal burning power plants?"
+	"hydro power and wind turbines are almost the same! The only diffrence is how we get the rotor to move!",
+	"Ontario has no coal burning power plants"
   ];
   
   const randomFact = facts[Math.floor(Math.random()*facts.length)];
