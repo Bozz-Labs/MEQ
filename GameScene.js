@@ -1,5 +1,5 @@
 const facts = [
-	"Apples",
+	"Canada produces an average of 4,596,724.82 barrels of crude oil a day!",
 	"hydro power and wind turbines are almost the same! The only diffrence is how we get the rotor to move!",
 	"Ontario has no coal burning power plants"
   ];
