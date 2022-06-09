@@ -2,7 +2,8 @@ const facts = [
 	"Canada produces an average of 4,596,724.82 barrels of crude oil a day?",
 	"hydro power and wind turbines are almost the same? The only diffrence is how we get the rotor to move!",
 	"Ontario has no coal burning power plants?",
-	"Nuclear energy creates zero emissions?"
+	"Nuclear energy creates zero emissions?",
+	"there are two main kinds of energy? Potential and Kenetic!"
   ];
   
   const randomFact = facts[Math.floor(Math.random()*facts.length)];
