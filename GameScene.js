@@ -70,13 +70,6 @@ class GameScene extends Phaser.Scene {
 			this.add.text(160, 270, 'Click To Restart', { fontSize: '15px', fill: '#000000' })	
 			console.log('Player Entity killed')
 			console.log('Game Stopped')
-			if (confirm(`Did you know that ${randomFact} Click OK to recieve a diffrent fact later. Click cancel to continue playing.`)) {
-				// OK
-				window.location.reload();
-			  } else {
-				// Cancel
-				console.log('Canceled Refresh')
-			  }
 
 			this.input.on('pointerup', () => {
 				gameState.score = 0;
