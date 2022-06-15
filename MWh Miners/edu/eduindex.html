@@ -13,7 +13,7 @@
         <li class="list">Avoid the electricity falling from the sky!</li>
       </ul>
       <noscript>You need to enable JavaScript to view the full site.</noscript>
-    <h1>Play Megawatt Miners! (edu version)</h1>
+    <h1>Play Megawatt Miners!</h1>
   </body>
     <style>
       canvas {
@@ -26,23 +26,6 @@
   <script src="https://cdn.jsdelivr.net/npm/phaser@3.16.2/dist/phaser.min.js"></script>
   
   <script>
-class StartScene extends Phaser.Scene {
-	constructor() {
-		super({ key: 'StartScene' })
-	}
-
-	create() {
-		this.add.text( 150, 250, 'Click to Play!', {fill: '#000000', fontSize: '20px'})
-		console.log('StartScene.js loaded')
-		this.input.on('pointerdown', () => {
-			this.scene.stop('StartScene')
-			this.scene.start('GameScene')
-			console.log('GameScene.js Loaded')
-		})
-	}
-}
-</script>
-  <script>
 const facts = [
 	"Canada produces an average of 4,596,724.82 barrels of crude oil a day?",
 	"hydro power and wind turbines are almost the same? The only diffrence is how we get the rotor to move!",
@@ -53,29 +36,28 @@ const facts = [
   
   const randomFact = facts[Math.floor(Math.random()*facts.length)];
 
+
 class GameScene extends Phaser.Scene {
 	constructor(){
 		super({ key: 'GameScene' })
 	}
 
 	preload() {
-		this.load.image('bug1', 'https://i.postimg.cc/KYHNh8cJ/Lightning-bolt.png');
-		this.load.image('bug2', 'https://i.postimg.cc/KYHNh8cJ/Lightning-bolt.png');
-		this.load.image('bug3', 'https://i.postimg.cc/KYHNh8cJ/Lightning-bolt.png');
+		this.load.image('bolt', 'https://i.postimg.cc/KYHNh8cJ/Lightning-bolt.png');
 		this.load.image('platform', 'https://content.codecademy.com/courses/learn-phaser/physics/platform.png');
-		this.load.image('codey', 'https://i.postimg.cc/05JB7fSW-/Henry-The-stickman-unsized-2-10.png');
+		this.load.image('Henry', 'https://i.postimg.cc/05JB7fSW-/Henry-The-stickman-unsized-2-10.png');
 	}
 	
 	create() {
-		gameState.player = this.physics.add.sprite(225, 450, 'codey').setScale(.5);
+		gameState.player = this.physics.add.sprite(225, 450, 'Henry').setScale(.5);
 
 		const platforms = this.physics.add.staticGroup();
 
 		platforms.create(225, 490, 'platform').setScale(1, .3).refreshBody();
 
 		gameState.scoreText = this.add.text(20, 485, 'Megawatt Hours: 0', { fontSize: '15px', fill: '#000000' });
-    
-        gameState.housesPoweredText = this.add.text(20, 450, '0 Houses powered for a year', { fontSize: '15px', fill: '#000000' });
+		
+		gameState.housesPoweredText = this.add.text(20, 450, '0 Houses powered for a year', { fontSize: '15px', fill: '#000000' });
 
 		gameState.player.setCollideWorldBounds(true);
 
@@ -83,25 +65,25 @@ class GameScene extends Phaser.Scene {
 
 		gameState.cursors = this.input.keyboard.createCursorKeys();
 
-		const bugs = this.physics.add.group();
+		const bolts = this.physics.add.group();
 
-		const bugList = ['bug1', 'bug2', 'bug3']
+		const boltList = ['bolt']
 		
-		const bugGen = () => {
+		const boltGen = () => {
 			const xCoord = Math.random() * 450
-			let randomBug = bugList[Math.floor(Math.random() * 3)]
-			bugs.create(xCoord, 10, randomBug)
+			let randomBolt = boltList[Math.floor(Math.random() * 1)]
+			bolts.create(xCoord, 10, randomBolt)
 		}
 
-		const bugGenLoop = this.time.addEvent({
+		const boltGenLoop = this.time.addEvent({
 			delay: 100,
-			callback: bugGen,
+			callback: boltGen,
 			callbackScope: this,
 			loop: true,
 		});
 
-		this.physics.add.collider(bugs, platforms, function (bug) {
-			bug.destroy();
+		this.physics.add.collider(bolts, platforms, function (bolt) {
+			bolt.destroy();
 			gameState.score += 10;
 			gameState.housesPowered += 1;
 			gameState.scoreText.setText(`Megawatt Hours: ${gameState.score}`);
@@ -109,8 +91,8 @@ class GameScene extends Phaser.Scene {
 			console.log('Entity Killed')
 		})
 
-		this.physics.add.collider(gameState.player, bugs, () => {
-			bugGenLoop.destroy();
+		this.physics.add.collider(gameState.player, bolts, () => {
+			boltGenLoop.destroy();
 			this.physics.pause();
 			this.add.text(180, 250, 'Game Over', { fontSize: '15px', fill: '#000000' });
 			this.add.text(160, 270, 'Click To Restart', { fontSize: '15px', fill: '#000000' })	
